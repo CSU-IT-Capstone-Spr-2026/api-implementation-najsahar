@@ -1,31 +1,33 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/zN2AskmG)
 # XKCD Comic Viewer
 
-[Add your 2-3 sentence description of what your application does here]
+This web application uses the XKCD API to display comics dynamically. Users can view the latest comic, navigate between comics using Previous and Next buttons, and search for specific comics by entering a comic number. The application demonstrates API integration, JSON parsing, input validation, and error handling using Flask.
+
+---
 
 ## Features Implemented
 
-Check off the features you implemented (must have at least 4 and 2 are implemeted for you already):
-
 - [X] Feature #1: Display the Latest Comic
 - [X] Feature #2: Display a Specific Comic by Number
-- [ ] Feature #3: Random Comic Button
-- [ ] Feature #4: Navigation (Previous/Next)
-- [ ] Feature #5: Search by Comic Number Form
-- [ ] Feature #6: Display Multiple Recent Comics
+- [X] Feature #4: Navigation (Previous/Next)
+- [X] Feature #5: Search by Comic Number Form
+
+---
 
 ## Technologies Used
 
 - Python 3.8+
 - Flask 3.0.0
 - Requests 2.31.0
-- XKCD API
+- XKCD Public API
+
+---
 
 ## Installation and Setup
 
 ### Prerequisites
-- Python 3.8 or higher installed
-- pip (Python package manager)
+- Python 3.8 or higher
+- pip installed
 
 ### Steps to Run
 
@@ -52,8 +54,13 @@ Check off the features you implemented (must have at least 4 and 2 are implemete
    ```
 
 ## Usage
+- The homepage displays the latest XKCD comic.
+- Click **Previous** to view the prior comic.
+- Click **Next** to move forward (disabled on the latest comic).
+- Use the search box to enter a comic number (e.g., 614).
+- Invalid inputs (letters, negative numbers, 0, or non-existent comics) display a friendly error message.
 
-[Explain how to use your application - what can users do? What buttons should they click?]
+---
 
 ## Screenshots
 
@@ -67,20 +74,30 @@ Example:
 
 ## API Endpoints Used
 
-- `GET /info.0.json` - Fetches the latest comic
-- `GET /{comic_number}/info.0.json` - Fetches a specific comic by number
+- `GET /info.0.json` — Fetches the most recent comic.
+- `GET /{comic_number}/info.0.json` — Fetches a specific comic by number.
+
+---
 
 ## Challenges and Solutions
 
-[Write 2-3 paragraphs about:]
-- What challenges did you face while working on this assignment?
-- How did you solve them?
-- What did you learn about APIs?
+- One challenge was handling invalid user input, such as entering "0" or non-numeric values. Initially, this caused the application to crash. I resolved this by validating input using type checking and conditional logic before making the API request.
+
+- Another challenge was managing API errors, such as requesting a comic number that does not exist. The XKCD API returns a 404 error for missing comics, so I implemented error handling using `try/except` blocks and status code checks to display user-friendly messages instead of crashing the application.
+
+- Through this assignment, I learned how to make HTTP requests using the `requests` library, parse JSON responses into Python dictionaries, and dynamically render API data within a Flask web application.
+
+---
+
 
 ## Future Improvements
 
-[Optional: What would you add if you had more time?]
+If I had more time, I would add:
+- A Random Comic button
+- Improved UI styling
+- A page that displays multiple recent comics in a grid layout
 
+---
 ## Author
 
-[Your name]
+Najwa Aissaoui
