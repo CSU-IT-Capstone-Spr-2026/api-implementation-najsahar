@@ -63,8 +63,9 @@ This web application uses the XKCD API to display comics dynamically. Users can 
 ---
 
 ## Screenshots
-
-[Add screenshots of your application here - you can drag and drop images into GitHub or use Markdown image syntax]
+<img width="1906" height="959" alt="Screenshot 2026-02-17 213046" src="https://github.com/user-attachments/assets/11f52bf3-b58b-4d1a-98c1-673381bc7311" />
+<img width="1919" height="884" alt="Screenshot 2026-02-17 213035" src="https://github.com/user-attachments/assets/5f9eea07-5910-422b-90f6-f06652f53b9c" />
+<img width="1919" height="889" alt="Screenshot 2026-02-17 213058" src="https://github.com/user-attachments/assets/969458ba-4dc1-4650-bad7-a6de407cea8f" />
 
 Example:
 ```
