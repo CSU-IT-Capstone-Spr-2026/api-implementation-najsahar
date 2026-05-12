@@ -144,31 +144,67 @@
     </header>
 
     <main>
-        {% if error %}
-        <!-- Display error message if something went wrong -->
-        <div class="error-message">
-            <strong>Error:</strong> {{ error }}
+
+    <!-- Search Form -->
+    <div style="margin-bottom: 20px; text-align: center;">
+        <form action="{{ url_for('search') }}" method="POST">
+            <input type="text" name="comic_num" placeholder="Enter comic number"
+                style="padding: 10px; width: 200px;">
+
+            <button type="submit" class="btn">
+                Search
+            </button>
+        </form>
+    </div>
+
+    {% if error %}
+    <!-- Display error message if something went wrong -->
+    <div class="error-message">
+        <strong>Error:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    {% if comic %}
+    <!-- Display the comic if we successfully fetched it -->
+    <div class="comic-container">
+        <h2 class="comic-title">{{ comic.title }}</h2>
+        <p class="comic-number">Comic #{{ comic.num }}</p>
+
+        <img src="{{ comic.img }}" alt="{{ comic.alt }}" class="comic-image" title="{{ comic.alt }}">
+
+        <div class="comic-alt">
+            <strong>Alt text:</strong> {{ comic.alt }}
         </div>
-        {% endif %}
 
-        {% if comic %}
-        <!-- Display the comic if we successfully fetched it -->
-        <div class="comic-container">
-            <h2 class="comic-title">{{ comic.title }}</h2>
-            <p class="comic-number">Comic #{{ comic.num }}</p>
+        <p class="comic-date">
+            Published: {{ comic.month }}/{{ comic.day }}/{{ comic.year }}
+        </p>
 
-            <img src="{{ comic.img }}" alt="{{ comic.alt }}" class="comic-image" title="{{ comic.alt }}">
+        <!-- Navigation Buttons -->
+        <div class="navigation">
 
-            <div class="comic-alt">
-                <strong>Alt text:</strong> {{ comic.alt }}
-            </div>
+            {% if comic.num > 1 %}
+            <a href="{{ url_for('show_comic', comic_num=comic.num - 1) }}" class="btn">
+                Previous
+            </a>
+            {% else %}
+            <button class="btn" disabled>Previous</button>
+            {% endif %}
 
-            <p class="comic-date">
-                Published: {{ comic.month }}/{{ comic.day }}/{{ comic.year }}
-            </p>
-            <!-- TODO: Add any buttons for navigation, random, or form to fetch comics -->
+            {% if latest_num and comic.num < latest_num %}
+            <a href="{{ url_for('show_comic', comic_num=comic.num + 1) }}" class="btn">
+                Next
+            </a>
+            {% else %}
+            <button class="btn" disabled>Next</button>
+            {% endif %}
+
         </div>
-        {% endif %}
+
+    </div>
+    {% endif %}
+
+
     </main>
     <footer>
         <p>Comics from <a href="https://xkcd.com" target="_blank">xkcd.com</a> by Randall Munroe</p>
